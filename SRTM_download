@@ -1,0 +1,15 @@
+SRTM DOWNLOAD DATA
+// Map.addLayer(dem, {}, 'dem');
+
+var dem_clip=dem.clip(geometry);
+Map.addLayer(dem_clip, {}, 'DEM_CLIP');
+
+Export.image.toDrive({
+  image:dem_clip,
+  description:'dem_aoi',
+  region: geometry,
+  folder: 'earthengine',
+  scale:30,
+  maxPixels:1e10
+  
+})
